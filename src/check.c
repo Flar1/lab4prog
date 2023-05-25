@@ -65,3 +65,8 @@ char *process(char *delim, char *dir, char *paths)
     free(delimiter);
     return new_paths;
 }
+void output(char* new_paths)
+{
+    printf("new paths: %s\n", new_paths);
+}
+

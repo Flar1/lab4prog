@@ -1,15 +1,9 @@
-// delim: +
-// dir: /home/stud
-// paths: ~/games/packman.cpp+~alex/docs+~/study/Prog/lab4.c+/usr/bin/gcc
-// Выход:
-
-// new paths: ~/games/packman.cpp+/home/stud/alex/docs+~/study/Prog/lab4.c +/usr/bin/gcc
-
 #include <stdio.h>
-#include "mystrings.h"
 #include <stdlib.h>
-#define max_len 2000
 
+#include "check.h"
+#include "mystrings.h"
+#define max_len 2000
 char *input(char *delim, char *dir)
 {
     char ch;
@@ -31,11 +25,12 @@ char *input(char *delim, char *dir)
 
 char *process(char *delim, char *dir, char *paths)
 {
-    char *del_f = my_strtok(paths, delim);
+    //char *del_f = my_strtok(paths, delim);
     char *new_paths = calloc(1024, sizeof(char));
     char *delimiter = malloc(2 * sizeof(char));
-    delimiter[0] = delim;
+    delimiter[0] = delim[0];
     delimiter[1] = '\0';
+    char *del_f = my_strtok(paths, delimiter);
     while (del_f != NULL)
     {
         if (del_f[0] == '~' && del_f[1] != '/')
@@ -56,11 +51,10 @@ char *process(char *delim, char *dir, char *paths)
 
         del_f = my_strtok(NULL, delim);
     }
-    if (my_strlen(new_paths) > 0 && new_paths[my_strlen(new_paths) - 1] == delim)
+    if (my_strlen(new_paths) > 0 && new_paths[my_strlen(new_paths) - 1] == delim[0])
     {
         new_paths[my_strlen(new_paths) - 1] = '\0';
     }
-    printf("%s\n", paths);
     free(del_f);
     free(delimiter);
     return new_paths;

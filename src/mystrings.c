@@ -19,7 +19,7 @@ char *my_strcat(char *dest, char *src)
     return dest;
 }
 
-char *my_strtok(char *string, char delim)
+char *my_strtok(char *string, char *delim)
 {
     static char *last;
     if (string != NULL)
@@ -27,13 +27,13 @@ char *my_strtok(char *string, char delim)
     if (last == NULL)
         return NULL;
     char *tmp = last;
-    while (*tmp == delim)
+    while (*tmp == delim[0])
         tmp++;
     if (*tmp == '\0')
         return NULL;
     int i;
     last = tmp;
-    for (i = 0; tmp[i] != delim; i++)
+    for (i = 0; tmp[i] != delim[0]; i++)
         if (tmp[i] == '\0')
         {
             last = NULL;

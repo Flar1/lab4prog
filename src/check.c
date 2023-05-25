@@ -10,13 +10,14 @@
 #include <stdlib.h>
 #define max_len 2000
 
-char* input(char* delim, char* dir)
+char *input(char *delim, char *dir)
 {
     char ch;
-    char* paths = malloc(max_len);
+    char *paths = malloc(max_len);
     printf("delim: ");
     scanf("%c%c", delim, &ch);
-    while (ch != '\n') {
+    while (ch != '\n')
+    {
         scanf("%c", &ch);
     }
     printf("dir: ");
@@ -28,7 +29,7 @@ char* input(char* delim, char* dir)
     return paths;
 }
 
-char *process(char* delim, char *dir, char* paths)
+char *process(char *delim, char *dir, char *paths)
 {
     char *del_f = my_strtok(paths, delim);
     char *new_paths = calloc(1024, sizeof(char));
@@ -51,17 +52,16 @@ char *process(char* delim, char *dir, char* paths)
         {
             my_strcat(new_paths, del_f);
             my_strcat(new_paths, delimiter);
-
         }
 
         del_f = my_strtok(NULL, delim);
     }
-    if (my_strlen(new_paths) > 0 && new_paths[my_strlen(new_paths) - 1] == delim) {
-    new_paths[my_strlen(new_paths) - 1] = '\0';
+    if (my_strlen(new_paths) > 0 && new_paths[my_strlen(new_paths) - 1] == delim)
+    {
+        new_paths[my_strlen(new_paths) - 1] = '\0';
     }
     printf("%s\n", paths);
     free(del_f);
     free(delimiter);
     return new_paths;
 }
-    

@@ -1,7 +1,7 @@
 // delim: +
 // dir: /home/stud
 // paths: ~/games/packman.cpp+~alex/docs+~/study/Prog/lab4.c+/usr/bin/gcc
-//new paths: ~/games/packman.cpp+/home/stud/alex/docs+~/study/Prog/lab4.c +/usr/bin/gcc
+// new paths: ~/games/packman.cpp+/home/stud/alex/docs+~/study/Prog/lab4.c +/usr/bin/gcc
 #include <stdio.h>
 #include "mystrings.h"
 #include <stdlib.h>
@@ -36,13 +36,13 @@ int main()
         {
             my_strcat(paths, del_f);
             my_strcat(paths, delimiter);
-
         }
 
         del_f = my_strtok(NULL, delim);
     }
-    if (my_strlen(paths) > 0 && paths[my_strlen(paths) - 1] == delim) {
-    paths[my_strlen(paths) - 1] = '\0';
+    if (my_strlen(paths) > 0 && paths[my_strlen(paths) - 1] == delim)
+    {
+        paths[my_strlen(paths) - 1] = '\0';
     }
     printf("%s\n", paths);
     free(del_f);

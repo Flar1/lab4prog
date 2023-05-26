@@ -3,7 +3,6 @@
 
 #include "check.h"
 #include "mystrings.h"
-#define max_len 2000
 char *input(char *delim, char *dir)
 {
     char ch;
@@ -21,6 +20,23 @@ char *input(char *delim, char *dir)
     fgets(paths, max_len, stdin);
     paths[my_strlen(paths) - 1] = '\0';
     return paths;
+}
+
+int check(char *delim, char *dir, char *paths)
+{
+	if (my_strlen(paths) > max_len)
+	{
+		printf("error,max len str = 2000 symbols");
+		return 0;
+	}
+	
+	if ((dir[(my_strlen(dir) - 1)]) != '/')
+		return 1;
+	else
+	{
+		printf("error, please name dir: /./.\nexample:/home/stud\n");
+		return 0;
+	}
 }
 
 char *process(char *delim, char *dir, char *paths)
